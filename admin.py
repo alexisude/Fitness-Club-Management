@@ -439,6 +439,27 @@ def update_session():
     finally:
         cursor.close()
 
+def send_payment_receipt(member_id, amount):
+    try:
+        cursor = db.conn.cursor()
+
+        # Construct notification message
+        message = f"Dear member, your monthly fees of ${amount} have been successfully collected. Thank you for your payment."
+
+        # Insert notification for the member
+        insert_notification_query = "INSERT INTO memberNotifications (member_id, message) VALUES (%s, %s)"
+        cursor.execute(insert_notification_query, (member_id, message))
+
+        db.conn.commit()
+        print("Payment receipt sent successfully!")
+
+    except psycopg2.Error as e:
+        db.conn.rollback()
+        print("Error sending payment receipt:", e)
+
+    finally:
+        cursor.close()
+
 
 def send_notifications(session_id, field, new_value):
     try:
@@ -515,6 +536,7 @@ def collect_monthly_fees():
             cursor.execute(insert_query, (member_id, amount))
             db.conn.commit()
             print("Monthly fees collected successfully.")
+            send_payment_receipt(member_id, amount)
 
     except psycopg2.Error as e:
         db.conn.rollback()

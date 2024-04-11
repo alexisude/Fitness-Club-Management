@@ -21,3 +21,9 @@ INSERT INTO rooms (room_number, available) VALUES
 (8, true),
 (9, true),
 (10, true);
+
+INSERT INTO equipment (equipment_name, last_maintenance_date) VALUES
+('Treadmill', 2024-01-01),
+('Bicep Machine', 2023-01-01),
+('Rowing Machine', 2024-02-01);
+
