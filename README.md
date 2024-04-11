@@ -2,7 +2,7 @@
 
 This project interacts with a PostgreSQL database containing all tables needed for the running of the app. This project is a software application designed to streamline the operations of a health and fitness club. It provides functionalities for both members and administrators to manage various aspects of the club efficiently.
 
-# Video Link: https://www.youtube.com/watch?v=klCxkkQeeTU
+# Video Link: https://www.youtube.com/watch?v=VfH1SF5X69Q
 
 # Steps to Run the Project:
 1. **Install Required Dependencies:**
